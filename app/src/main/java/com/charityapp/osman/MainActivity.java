@@ -21,21 +21,30 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         videoShow= (TextView) findViewById(R.id.videoShow);
+
         videoShow.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 if (Appodeal.isLoaded(Appodeal.VIDEO)) {
+
                     Appodeal.show(MainActivity.this, Appodeal.VIDEO);
+
                 } else {
+
                     Toast.makeText(MainActivity.this, "Video is not loaded", Toast.LENGTH_LONG).show();
+
                 }
             }
+
         });
 
         String appKey = "68ee5bc0d4314c7bc08a122b1d8c4b95b2dcebb2c37f3065";
+
         Appodeal.initialize(this, appKey);
+
         Appodeal.cache(this, Appodeal.VIDEO);
 
         Appodeal.setVideoCallbacks(new VideoCallbacks() {
@@ -56,12 +65,16 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onVideoFinished() {
+
                 Toast.makeText(MainActivity.this, "You got 1 point", Toast.LENGTH_LONG).show();
+
             }
 
             @Override
             public void onVideoClosed() {
+
                 isAvailable = false;
+
             }
         });
 
